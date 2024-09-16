@@ -26,6 +26,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
   late AnimationController _controller;
   InterstitialAd? interstitialAd;
   Timer? interstitialTimeout;
+
   @override
   void initState() {
     _controller = AnimationController(
@@ -39,6 +40,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
   @override
   void dispose() {
     interstitialTimeout?.cancel();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -75,14 +77,29 @@ class _ConnectionButtonState extends State<ConnectionButton>
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: connectedGradient,
+        gradient: LinearGradient(
+          colors: [Colors.greenAccent.shade700, Colors.tealAccent.shade700],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.greenAccent.withOpacity(0.6),
+            blurRadius: 20,
+            spreadRadius: 10,
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(10),
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: connectedGradient),
+            gradient: LinearGradient(
+              colors: [Colors.greenAccent.shade400, Colors.tealAccent.shade400],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            )),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -93,7 +110,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
               "CONNECTED",
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Colors.white,
-                  fontSize: 10,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
@@ -116,11 +133,15 @@ class _ConnectionButtonState extends State<ConnectionButton>
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.pink,
+              gradient: LinearGradient(
+                colors: [Colors.orangeAccent, Colors.redAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
               boxShadow: [
                 BoxShadow(
                   color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+                  Theme.of(context).colorScheme.secondary.withOpacity(0.4),
                   blurRadius: 20,
                   spreadRadius: 10,
                 ),
@@ -131,7 +152,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.pink),
+                  color: Colors.redAccent),
             ),
           ),
         ),
@@ -151,7 +172,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
                 stage.name.toUpperCase().replaceAll("_", " "),
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: Colors.white,
-                    fontSize: 8,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -164,16 +185,31 @@ class _ConnectionButtonState extends State<ConnectionButton>
 
   Widget _disconnectedUI(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.pink,
+        gradient: LinearGradient(
+          colors: [Colors.redAccent, Colors.pink],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.redAccent.withOpacity(0.6),
+            blurRadius: 20,
+            spreadRadius: 10,
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(10),
       child: Container(
         alignment: Alignment.center,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.pink),
+            gradient: LinearGradient(
+              colors: [Colors.redAccent.shade100, Colors.deepOrangeAccent.shade100],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            )),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -187,7 +223,7 @@ class _ConnectionButtonState extends State<ConnectionButton>
               "DISCONNECTED",
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Colors.white.withOpacity(1),
-                  fontSize: 10,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),

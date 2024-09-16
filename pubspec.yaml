@@ -17,9 +17,6 @@ dependencies:
   dio: ^5.3.3
   easy_localization: ^3.0.3
   extended_tabs: ^4.1.0
-  firebase_analytics: ^10.6.2
-  firebase_core: ^2.20.0
-  firebase_crashlytics: ^3.4.2
   flutter:
     sdk: flutter
   flutter_html: ^3.0.0-alpha.6

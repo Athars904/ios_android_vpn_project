@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:one_vpn/core/providers/globals/iap_provider.dart';
@@ -40,7 +38,6 @@ class AdsProvider extends ChangeNotifier {
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
           completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
         },
         onAdFailedToLoad: (error) {
           completer.complete();
@@ -60,7 +57,6 @@ class AdsProvider extends ChangeNotifier {
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {
           completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
         },
         onAdFailedToLoad: (error) {
           completer.complete();
@@ -79,7 +75,6 @@ class AdsProvider extends ChangeNotifier {
       rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
         onAdLoaded: (ad) {
           completer.complete(ad);
-          FirebaseAnalytics.instance.logAdImpression();
         },
         onAdFailedToLoad: (error) {
           completer.complete();
@@ -99,7 +94,6 @@ class AdsProvider extends ChangeNotifier {
       size: adsize,
       listener: BannerAdListener(
         onAdImpression: (ad) {
-          FirebaseAnalytics.instance.logAdImpression();
         },
       ),
       request: adRequest,

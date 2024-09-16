@@ -34,7 +34,7 @@ class _ServerItemState extends State<ServerItem>
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-            color: Colors.pink,
+            color: Colors.blueGrey,
             borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [

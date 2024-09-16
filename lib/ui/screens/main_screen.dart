@@ -18,7 +18,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../components/connection_button.dart';
 import '../components/custom_image.dart';
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -61,10 +60,6 @@ class _MainScreenState extends State<MainScreen> {
                   child: AdsProvider.bannerAd(bannerAdUnitID,
                           adsize: AdSize.mediumRectangle)),
               const ColumnDivider(space: 20),
-              ElevatedButton(onPressed: ()
-                  {
-                    startScreen(context, const SettingScreen());
-                  }, child: Text('clicj'))
             ],
           ),
         ],

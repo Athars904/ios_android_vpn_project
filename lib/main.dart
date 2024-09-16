@@ -1,7 +1,7 @@
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:one_vpn/core/providers/globals/ads_provider.dart';
@@ -16,19 +16,11 @@ import 'core/resources/environment.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Preferences.init();
-
-  await Firebase.initializeApp();
   await Future.wait([
     CountryCodes.init(),
     EasyLocalization.ensureInitialized(),
     MobileAds.instance.initialize(),
-    MobileAds.instance.updateRequestConfiguration(
-      RequestConfiguration(
-        testDeviceIds: [
-          'B3EEABB8EE11C2BE770B684D95219ECB',
-        ],
-      ),
-    ),
+
     AppTrackingTransparency.requestTrackingAuthorization(),
   ].map((e) => Future.microtask(() => e)));
 
